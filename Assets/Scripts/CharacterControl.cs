@@ -59,6 +59,10 @@ public class CharacterControl : MonoBehaviour
             }
 
         }
+        if (Input.GetKey(KeyCode.S))
+        {
+            spriteRenderer.sprite = jumpingAnim[7];
+        }
     }
     void FixedUpdate()
     {

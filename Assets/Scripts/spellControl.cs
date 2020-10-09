@@ -7,6 +7,7 @@ public class spellControl : MonoBehaviour
     // Start is called before the first frame update
     EnemyWizard EnemyWizard;
     private Rigidbody2D physics;
+    
 
     public spellControl(EnemyWizard enemyWizard)
     {
@@ -16,8 +17,10 @@ public class spellControl : MonoBehaviour
     void Start()
     {
         EnemyWizard = GameObject.FindGameObjectWithTag("EnemyWizard").GetComponent<EnemyWizard>();
-        physics = GetComponent<Rigidbody2D>();
+        physics = GetComponent<Rigidbody2D>();  
         physics.AddForce(EnemyWizard.GetDirection() * 1000);
+        
+       
     }
 
     

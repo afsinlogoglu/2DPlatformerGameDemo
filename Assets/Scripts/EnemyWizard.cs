@@ -33,16 +33,26 @@ public class EnemyWizard : MonoBehaviour
     void FixedUpdate()
     {
         AttackMode();
-        if (ray.collider.tag == "Player")  //enemyWizard seeing our adventurer
+        if (ray.collider.tag == "Player")  //enemyWizard can see our adventurer
         {
-            speed = 9;
-            useSpell();
+            Vector3 rayDirection = adventurer.transform.position - transform.position;
+
+            if (rayDirection.x < 5 && rayDirection.x>-10)
+
+            {
+                Debug.Log(rayDirection.x);
+                speed = 8;
+                useSpell();
+            }
+            
         }
         else     //enemyWizard can't  see our adventurer
         {
             speed= 3;
         }
         enemyMoving();
+        
+      
        
     }
 
@@ -61,6 +71,7 @@ public class EnemyWizard : MonoBehaviour
         Vector3 rayDirection = adventurer.transform.position - transform.position;
         ray = Physics2D.Raycast(transform.position, rayDirection, 1000, layermask);
         Debug.DrawLine(transform.position, ray.point, Color.magenta);
+        
     }
 
     void enemyMoving()
